@@ -26,7 +26,7 @@ struct ContentView: View {
                     .position(x:350, y:20)
                     .font(.system(size: 25.0))
                     
-4                    let minutes = String(format: "%02d", stopWatch.counter / 60)
+                   let minutes = String(format: "%02d", stopWatch.counter / 60)
                     let seconds = String(format: "%02d", stopWatch.counter % 60)
                     let union = minutes + " : " + seconds
                    

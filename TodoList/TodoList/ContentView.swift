@@ -16,7 +16,7 @@ struct ContentView: View {
         
         ZStack {
             VStack {
-                
+
                 VStack {
                     
                     Button(action: {

@@ -30,14 +30,18 @@ struct PopUpView: View {
                 AddData()
             }, label: {
                 ZStack {
+                    
                     RoundedRectangle(cornerRadius: 20)
+                        .fill(todo.isEmpty ? Color.gray : Color.blue)
                     Text("next")
                         .font(.title3)
                         .foregroundColor(.white)
                         .padding()
+                    
                 }
                 
             })
+            .disabled(todo.isEmpty)
         }
         .fixedSize(horizontal: false, vertical: true)
         .padding()
@@ -50,7 +54,6 @@ struct PopUpView: View {
         let newItem = TodoItem(title: todo, isCompleted: false)
                 items.append(newItem)
                 todo = ""
-        print(items)
         showing = false
     }
 }

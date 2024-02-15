@@ -14,16 +14,9 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 130))
     ]
     var body: some View {
-        ZStack {
+        VStack {
             NavigationView {
-                HStack {
-                    Text("Pinterest")
-                        .font(.title)
-                    NavigationLink(destination: DetailView()) {
-                        Image(systemName: "arrow.right")
-                            .font(.title)
-                    }
-                    .padding()
+                    
                     ScrollView {
                         LazyVGrid(columns:columns, spacing: 20) {
                             ForEach(data, id: \.self) { i in
@@ -39,9 +32,18 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                     }
-                }
+                
                 .padding()
+                .navigationBarTitle(Text("Pinterest"), displayMode: .inline)
+                .navigationBarItems(trailing:
+                                        NavigationLink(destination: DetailView()) {
+                    Image(systemName: "arrow.right")
+                        .font(.title)
+                }
+                )
             }
+            
+            
         }
     }
 }

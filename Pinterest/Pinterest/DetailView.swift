@@ -20,37 +20,41 @@ struct DetailView: View {
     @State var openPhoto = false
     
     var body: some View {
-        VStack {
-            VStack(spacing: 100) {
-                Button("업로드") {
-                    showing = true
-                }
-                TextField("제목", text: $title)
-                    .padding()
-                
-            }
-            .padding()
-            
-            VStack {
-                Button(action: {
-                    self.openPhoto.toggle()
-                }, label: {
-                    let selected = image == nil ? Image("Image") : Image(uiImage: image!)
-                    selected
-                        .resizable()
-                        .frame(width: 300, height: 300)
-                })
-                .clipShape(Rectangle())
-                .overlay {
-                    Rectangle().stroke(.black, lineWidth: 2)
-                        .frame(width: 300, height: 300)
-                }
-                .sheet(isPresented: $openPhoto) {
-                    SUImagePicker(sourceType: .photoLibrary) { (image) in
-                        self.image = image
+        VStack() {
+            NavigationView {
+                VStack {
+                    Button(action: {
+                        self.openPhoto.toggle()
+                    }, label: {
+                        let selected = image == nil ? Image("Image") : Image(uiImage: image!)
+                        selected
+                            .resizable()
+                            .frame(width: 300, height: 300)
+                    })
+                    .clipShape(Rectangle())
+                    .overlay {
+                        Rectangle().stroke(.gray, lineWidth: 2)
+                            .frame(width: 300, height: 300)
+                    }
+                    .sheet(isPresented: $openPhoto) {
+                        SUImagePicker(sourceType: .photoLibrary) { (image) in
+                            self.image = image
+                        }
                     }
                 }
             }
+            .navigationBarItems(trailing:
+                                    HStack {
+                Spacer()
+                Button("업로드") {
+                    showing = true
+                }
+            }
+            )
+//
+//            .padding()
+//            Spacer()
+        
         }
     }
 }

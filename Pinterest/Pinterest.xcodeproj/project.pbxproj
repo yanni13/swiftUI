@@ -98,9 +98,9 @@
 			children = (
 				D8898E722B7DD59400EFBE5F /* PinterestApp.swift */,
 				D8898E742B7DD59400EFBE5F /* ContentView.swift */,
+				D8898E9D2B7DEC3C00EFBE5F /* DetailView.swift */,
 				D8898E762B7DD59500EFBE5F /* Assets.xcassets */,
 				D8898E782B7DD59500EFBE5F /* Preview Content */,
-				D8898E9D2B7DEC3C00EFBE5F /* DetailView.swift */,
 			);
 			path = Pinterest;
 			sourceTree = "<group>";

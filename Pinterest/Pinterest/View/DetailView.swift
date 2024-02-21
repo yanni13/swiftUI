@@ -20,40 +20,50 @@ struct DetailView: View {
     @State var openPhoto = false
     
     var body: some View {
-        VStack() {
+        
+        VStack {
             NavigationView {
-                VStack {
+                VStack(alignment: .center) {
                     Button(action: {
                         self.openPhoto.toggle()
                     }, label: {
-                        let selected = image == nil ? Image("Image") : Image(uiImage: image!)
+                        let selected = image == nil ? Image("user") : Image(uiImage: image!)
                         selected
                             .resizable()
-                            .frame(width: 300, height: 300)
+                            .frame(width: 250, height: 250)
+                            .aspectRatio(contentMode: .fit)
+                            
                     })
                     .clipShape(Rectangle())
                     .overlay {
-                        Rectangle().stroke(.gray, lineWidth: 2)
-                            .frame(width: 300, height: 300)
+                        Rectangle().stroke(.black, lineWidth: 5)
+                            .frame(width: 250, height: 250)
+                            .cornerRadius(5)
+                            
                     }
                     .sheet(isPresented: $openPhoto) {
                         SUImagePicker(sourceType: .photoLibrary) { (image) in
                             self.image = image
                         }
                     }
+                    
+                    TextField("내용을 입력해주세요.", text: $title, axis: .vertical)
+                        .textFieldStyle(.roundedBorder)
+                        .border(.gray)
+                        .padding()
+                       
                 }
+
+                
             }
+            .navigationTitle(Text("핀 만들기"))
             .navigationBarItems(trailing:
                                     HStack {
                 Spacer()
                 Button("업로드") {
                     showing = true
                 }
-            }
-            )
-//
-//            .padding()
-//            Spacer()
+            })
         
         }
     }

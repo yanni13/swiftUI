@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
+    
+    @ObservedObject var boardData = BoardData()
     
     var items: [Board] = [ //초기 데이터
         .init(title: "Image1"),
@@ -29,8 +30,8 @@ struct ContentView: View {
     
     var body: some View {
         
-        let columns = [GridItem(.flexible(minimum: 10, maximum: .infinity))]
         
+        let columns = [GridItem(.flexible(minimum: 10, maximum: .infinity))]
         
             NavigationView {
                 ScrollView {
@@ -47,6 +48,7 @@ struct ContentView: View {
                                         .cornerRadius(10)
                                     
                                 }
+                                
                                 
                             }
                             .padding()
@@ -73,7 +75,7 @@ struct ContentView: View {
                         
                         .navigationBarTitle(Text("Pinterest"), displayMode: .inline)
                         .navigationBarItems(trailing:
-                                                NavigationLink(destination: DetailView()) {
+                                                NavigationLink(destination: DetailView(boardData: boardData)) {
                             Image(systemName: "plus")
                                 .foregroundColor(Color.red)
                                 .font(.title)
@@ -89,6 +91,9 @@ struct ContentView: View {
             
         }
     }
+
+
+
 
 
 

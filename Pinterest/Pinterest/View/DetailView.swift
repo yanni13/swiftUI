@@ -7,17 +7,33 @@
 
 import SwiftUI
 
+class BoardData: ObservableObject { //공유데이터 모델 정의
+    @Published var boards: [Board] = []
+}
+
+
 struct Board: Identifiable {
     let id: UUID = UUID()
     var title : String
+    var image :  UIImage?
+}
+
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        // BoardData의 새 인스턴스를 생성하여 DetailView의 생성자에 전달
+        DetailView(boardData: BoardData())
+    }
 }
 
 struct DetailView: View {
     
+    @ObservedObject var boardData: BoardData
+    @Environment(\.presentationMode) var presentationMode
     @State var title = ""
     @State private var showing = false
     @State var image: UIImage?
     @State var openPhoto = false
+    
     
     var body: some View {
         
@@ -42,7 +58,7 @@ struct DetailView: View {
                             
                     }
                     .sheet(isPresented: $openPhoto) {
-                        SUImagePicker(sourceType: .photoLibrary) { (image) in
+                        UImagePicker(sourceType: .photoLibrary) { (image) in
                             self.image = image
                         }
                     }
@@ -61,35 +77,41 @@ struct DetailView: View {
                                     HStack {
                 Spacer()
                 Button("업로드") {
+                    
+                    let newBoard = Board(title: title, image: image)
+                    boardData.boards.append(newBoard)
                     showing = true
+                    presentationMode.wrappedValue.dismiss() //뷰 닫기
+                    
                 }
             })
+            
         
         }
     }
 }
 
 #Preview {
-    DetailView()
+    DetailView(boardData: BoardData())
 }
 
 
-struct SUImagePicker: UIViewControllerRepresentable {
+struct UImagePicker: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = UIImagePickerController
     
     @Environment(\.presentationMode)
-    private var presentationMode // 해당 뷰컨트롤러의 노출 여부
+    private var presentationMode
     let sourceType: UIImagePickerController.SourceType
-    let imagePicked: (UIImage) -> () // 이미지가 선택됐을때 결과 호출
+    let imagePicked: (UIImage) -> ()
     
 
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         
-        let parent: SUImagePicker
+        let parent: UImagePicker
         
-        init(parent: SUImagePicker) {
+        init(parent: UImagePicker) {
             self.parent = parent
         }
         

@@ -43,12 +43,11 @@ struct ContentView: View {
                                 ForEach(leftItems, id: \.title) { item in
                                     Image(item.title)
                                         .resizable()
-                                        .aspectRatio(contentMode: .fill)
+                                        .aspectRatio(contentMode: .fit)
                                         .scaledToFit()
                                         .cornerRadius(10)
                                     
                                 }
-                                
                                 
                             }
                             .padding()
@@ -57,7 +56,7 @@ struct ContentView: View {
                         
                         
                         VStack(spacing: 20.0) {
-                            LazyVGrid(columns:columns, spacing: 20) {
+                            LazyVGrid(columns:columns, spacing: 10) {
                                 ForEach(rightItems, id: \.title) { item in
                                     Image(item.title)
                                         .resizable()
@@ -84,19 +83,11 @@ struct ContentView: View {
                     }
                 }
                 
-                
-                
             }
-            
-            
-        }
+        
+        
     }
-
-
-
-
-
-
+}
 
 #Preview {
     ContentView()

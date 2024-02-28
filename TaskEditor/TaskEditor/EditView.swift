@@ -17,7 +17,7 @@ struct EditView: View {
             TextField("New Task", text: $task.title)
                 .font(.subheadline)
             DatePicker(
-                selection: $task.date, in: ...Date(), displayedComponents: .date) {
+                selection: $task.date, displayedComponents: .date) {
                     Text("Due Date")
                 }
                 

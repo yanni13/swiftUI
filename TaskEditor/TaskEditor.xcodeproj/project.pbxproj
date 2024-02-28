@@ -12,6 +12,7 @@
 		D8891AC12B8E009900F2997F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8891AC02B8E009900F2997F /* Assets.xcassets */; };
 		D8891AC42B8E009900F2997F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8891AC32B8E009900F2997F /* Preview Assets.xcassets */; };
 		D8891ACB2B8E20C900F2997F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8891ACA2B8E20C900F2997F /* EditView.swift */; };
+		D8891AD12B8F38C000F2997F /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8891AD02B8F38C000F2997F /* TaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		D8891AC02B8E009900F2997F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8891AC32B8E009900F2997F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8891ACA2B8E20C900F2997F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		D8891AD02B8F38C000F2997F /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				D8891ABC2B8E009800F2997F /* TaskEditorApp.swift */,
 				D8891ABE2B8E009800F2997F /* ContentView.swift */,
 				D8891ACA2B8E20C900F2997F /* EditView.swift */,
+				D8891AD02B8F38C000F2997F /* TaskView.swift */,
 				D8891AC02B8E009900F2997F /* Assets.xcassets */,
 				D8891AC22B8E009900F2997F /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 				D8891ABF2B8E009800F2997F /* ContentView.swift in Sources */,
 				D8891ABD2B8E009800F2997F /* TaskEditorApp.swift in Sources */,
 				D8891ACB2B8E20C900F2997F /* EditView.swift in Sources */,
+				D8891AD12B8F38C000F2997F /* TaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,20 +18,20 @@ struct ContentView: View {
     
     @State private var tasks = [TaskItem]()
     @State private var date = Date()
+    @State private var isEditForm = false
     
     var body: some View {
         
         NavigationView {
             VStack {
                 List {
-                    ForEach(tasks) {task in
+                    ForEach($tasks) { $task in
                         VStack(alignment: .leading) {
-                            Text(task.title)
-                                .font(.headline)
-                            Text("Due date: \(task.date, formatter: dateFormatter)") // 태스크 날짜
-                                .font(.subheadline)
-                            Text("Status: \(task.state)") // 태스크 상태
-                                .font(.caption)
+                            if isEditForm {
+                                EditView(task: $task)
+                            } else {
+                                TaskView(task: task)
+                            }
                         }
                         
                         
@@ -42,9 +42,9 @@ struct ContentView: View {
             .navigationTitle("Tasks")
             .navigationBarItems(trailing:
                                     Button(action: {
-                
+                isEditForm.toggle()
             }, label: {
-                Text("Edit")
+                Text(isEditForm ? "Done" : "Edit")
                     .font(.title2)
             }))
             
@@ -54,15 +54,19 @@ struct ContentView: View {
             }, label: {
                 Image(systemName: "plus")
                     .font(.title2)
-            })
+            }).disabled(isEditForm)
             )
             
         }
-        
     }
+    
     func addItem() {
         let newTask = TaskItem(title: "New Task", date: Date(), state: "Not started")
         tasks.append(newTask)
+    }
+    
+    func deleteTasks() {
+        
     }
 }
 

@@ -36,6 +36,7 @@ struct ContentView: View {
                         
                         
                     }
+                    .onDelete(perform: deleteTasks)
                     
                 }
             }
@@ -65,8 +66,8 @@ struct ContentView: View {
         tasks.append(newTask)
     }
     
-    func deleteTasks() {
-        
+    func deleteTasks(at offsets: IndexSet) {
+        tasks.remove(atOffsets: offsets)
     }
 }
 

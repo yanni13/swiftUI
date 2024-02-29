@@ -26,13 +26,13 @@ struct ContentView: View {
             VStack {
                 List {
                     ForEach($tasks) { $task in
-                        VStack(alignment: .leading) {
+                        //Stack(alignment: .leading) {
                             if isEditForm {
                                 EditView(task: $task)
                             } else {
                                 TaskView(task: task)
                             }
-                        }
+                       // }
                         
                         
                     }
@@ -42,21 +42,24 @@ struct ContentView: View {
             }
             .navigationTitle("Tasks")
             .navigationBarItems(trailing:
-                                    Button(action: {
-                isEditForm.toggle()
-            }, label: {
-                Text(isEditForm ? "Done" : "Edit")
-                    .font(.title2)
-            }))
+                                    HStack {
             
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                addItem()
-            }, label: {
-                Image(systemName: "plus")
-                    .font(.title2)
-            }).disabled(isEditForm)
-            )
+                Button {
+                    addItem()
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                }.disabled(isEditForm)
+                Button {
+                    isEditForm.toggle()
+                } label: {
+                    Text(isEditForm ? "Done" : "Edit")
+                        .font(.title2)
+                }
+            })
+                                    
+            
+            
             
         }
     }

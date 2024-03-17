@@ -18,18 +18,13 @@ struct Board: Identifiable {
     var image :  UIImage?
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        // BoardData의 새 인스턴스를 생성하여 DetailView의 생성자에 전달
-        DetailView(boardData: BoardData())
-    }
-}
+
 
 struct DetailView: View {
     
     @ObservedObject var boardData: BoardData
     @Environment(\.presentationMode) var presentationMode
-    @State var title = ""
+    @State var title: String = ""
     @State private var showing = false
     @State var image: UIImage?
     @State var openPhoto = false

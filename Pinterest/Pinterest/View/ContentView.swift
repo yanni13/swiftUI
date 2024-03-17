@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var boardData: BoardData
+    @ObservedObject var boardData = BoardData()
     
     private var leftItems: [Board] {
         Array(boardData.boards.prefix(upTo: boardData.boards.count/2))
@@ -20,16 +20,18 @@ struct ContentView: View {
                     VStack {
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(leftItems) { item in
-                                if let image = item.image {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaledToFit()
-                                        .cornerRadius(10)
-                                } else {
-                                    // 대체 이미지 또는 텍스트
+                                VStack {
+                                    if let image = item.image {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .scaledToFit()
+                                            .cornerRadius(10)
+                                    }
                                     Text(item.title)
+                                        
                                 }
+                                
                             }
                         }
                         .padding()
@@ -38,15 +40,17 @@ struct ContentView: View {
                     VStack(spacing: 20.0) {
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(rightItems) { item in
-                                if let image = item.image {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaledToFit()
-                                        .cornerRadius(10)
-                                } else {
-                                    // 대체 이미지 또는 텍스트
+                                VStack {
+                                    if let image = item.image {
+                                        
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .scaledToFit()
+                                            .cornerRadius(10)
+                                    }
                                     Text(item.title)
+                                    
                                 }
                             }
                         }
